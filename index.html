@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#050816">
+
+<title>Neo Eclipse [NE] | Recruitment</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+    --blue: #168cff;
+    --cyan: #54e6ff;
+    --black: #050816;
+    --panel: rgba(13,24,47,.92);
+    --text: #edf6ff;
+    --muted: #94a8c8;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Kanit', sans-serif;
+    color: var(--text);
+    background:
+        radial-gradient(ellipse at 15% 10%, #102c60 0, transparent 40%),
+        radial-gradient(ellipse at 90% 80%, #071f46 0, transparent 35%),
+        var(--black);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: .16;
+    background-image:
+        linear-gradient(rgba(48,143,255,.16) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(48,143,255,.16) 1px, transparent 1px);
+    background-size: 40px 40px;
+}
+
+header {
+    text-align: center;
+    padding: 42px 16px 30px;
+}
+
+.logo {
+    width: 84px;
+    height: 84px;
+    margin: 0 auto 18px;
+    display: grid;
+    place-items: center;
+    border: 2px solid var(--blue);
+    border-radius: 25px;
+    transform: rotate(-5deg);
+    background: linear-gradient(135deg,#0c2346,#07101f);
+    box-shadow: 0 0 35px #087cff35;
+}
+
+.logo span {
+    transform: rotate(5deg);
+    font-size: 29px;
+    font-weight: 800;
+    color: var(--cyan);
+}
+
+h1 {
+    font-size: clamp(30px,7vw,54px);
+    font-weight: 800;
+    letter-spacing: 2px;
+    line-height: 1.3;
+    background: linear-gradient(90deg,#fff,#57b8ff,#168cff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.subtitle {
+    color: var(--muted);
+    font-size: 12px;
+    letter-spacing: 3px;
+    margin-top: 5px;
+}
+
+.status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 22px;
+    padding: 8px 15px;
+    border: 1px solid #168cff50;
+    border-radius: 30px;
+    background: #0b1c35;
+    color: #81c7ff;
+    font-size: 12px;
+}
+
+.status-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #42ffad;
+    box-shadow: 0 0 12px #42ffad;
+}
+
+main {
+    width: min(720px,calc(100% - 28px));
+    margin: 0 auto 45px;
+}
+
+.panel {
+    border: 1px solid #168cff42;
+    border-radius: 24px;
+    background: var(--panel);
+    box-shadow: 0 20px 80px #0008;
+    overflow: hidden;
+}
+
+.panel-top {
+    padding: 24px 26px;
+    border-bottom: 1px solid #168cff30;
+    background: linear-gradient(90deg,#0e2445,transparent);
+}
+
+.panel-top h2 {
+    font-size: 20px;
+}
+
+.panel-top p {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 5px;
+}
+
+form {
+    padding: 25px 26px 30px;
+}
+
+.section-title {
+    color: var(--cyan);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin: 5px 0 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.section-title::after {
+    content: "";
+    height: 1px;
+    flex: 1;
+    background: linear-gradient(90deg,#168cff70,transparent);
+}
+
+.field {
+    margin-bottom: 21px;
+}
+
+label {
+    display: block;
+    font-size: 13px;
+    margin-bottom: 8px;
+    color: #d7e7ff;
+}
+
+.required {
+    color: var(--cyan);
+}
+
+input,select,textarea {
+    width: 100%;
+    padding: 13px 15px;
+    border-radius: 12px;
+    border: 1px solid #294467;
+    outline: none;
+    background: #060e1e;
+    color: white;
+    font-family: inherit;
+    font-size: 14px;
+}
+
+input:focus,select:focus,textarea:focus {
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px #168cff18;
+}
+
+select option {
+    background: #081329;
+}
+
+textarea {
+    min-height: 110px;
+    resize: vertical;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.upload-box {
+    border: 1px dashed #328fe9;
+    border-radius: 16px;
+    min-height: 150px;
+    padding: 20px;
+    text-align: center;
+    background: #0a1930;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.upload-box:hover {
+    background: #102647;
+    border-color: var(--cyan);
+}
+
+.upload-icon {
+    font-size: 34px;
+    margin-bottom: 7px;
+}
+
+.upload-box p {
+    font-size: 13px;
+}
+
+.upload-box small {
+    display: block;
+    color: var(--muted);
+    margin-top: 5px;
+    font-size: 11px;
+}
+
+#characterImage {
+    display: none;
+}
+
+#preview {
+    display: none;
+    max-width: 100%;
+    max-height: 270px;
+    object-fit: contain;
+    border-radius: 12px;
+    margin: 0 auto 12px;
+}
+
+.remove-image {
+    display: none;
+    margin: 10px auto 0;
+    padding: 6px 12px;
+    color: #ffaaaa;
+    background: #35111b;
+    border: 1px solid #713041;
+    border-radius: 8px;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.consent {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    color: var(--muted);
+    font-size: 12px;
+    margin: 22px 0;
+}
+
+.consent input {
+    width: 17px;
+    height: 17px;
+    margin-top: 3px;
+    accent-color: var(--blue);
+    flex-shrink: 0;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 16px;
+    border: 1px solid #66c7ff;
+    border-radius: 13px;
+    background: linear-gradient(100deg,#0863d8,#168cff,#0758bd);
+    color: white;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 8px 30px #087cff30;
+}
+
+.submit-btn:disabled {
+    opacity: .6;
+    cursor: wait;
+}
+
+#message {
+    display: none;
+    margin-top: 18px;
+    padding: 14px;
+    border-radius: 12px;
+    font-size: 13px;
+    text-align: center;
+}
+
+#message.success {
+    display: block;
+    background: #0d3027;
+    color: #83ffca;
+    border: 1px solid #23775d;
+}
+
+#message.error {
+    display: block;
+    background: #35131a;
+    color: #ffb2b2;
+    border: 1px solid #843744;
+}
+
+footer {
+    text-align: center;
+    padding: 0 15px 35px;
+    color: #667b9a;
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
+@media(max-width:520px) {
+    header {
+        padding-top: 30px;
+    }
+
+    .row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    form {
+        padding: 22px 17px;
+    }
+
+    .panel-top {
+        padding: 20px 17px;
+    }
+
+    .subtitle {
+        letter-spacing: 1px;
+        font-size: 11px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo"><span>NE</span></div>
+    <h1>NEO ECLIPSE</h1>
+    <div class="subtitle">GANG RECRUITMENT SYSTEM</div>
+
+    <div class="status">
+        <span class="status-dot"></span>
+        RECRUITMENT PORTAL
+    </div>
+</header>
+
+<main>
+<div class="panel">
+
+    <div class="panel-top">
+        <h2>📋 ใบสมัครเข้าแก๊ง</h2>
+        <p>กรอกข้อมูลให้ครบถ้วน เพื่อส่งใบสมัครให้ทีมงานตรวจสอบ</p>
+    </div>
+
+    <form id="applicationForm">
+
+        <div class="section-title">01 — CHARACTER INFORMATION</div>
+
+        <div class="row">
+            <div class="field">
+                <label for="icName">ชื่อ IC <span class="required">*</span></label>
+                <input id="icName" name="icName"
+                    placeholder="ชื่อในเกม" maxlength="60" required>
+            </div>
+
+            <div class="field">
+                <label for="ocName">ชื่อ OC <span class="required">*</span></label>
+                <input id="ocName" name="ocName"
+                    placeholder="ชื่อ OC" maxlength="60" required>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="field">
+                <label for="icAge">อายุ IC <span class="required">*</span></label>
+                <input id="icAge" name="icAge" type="number"
+                    min="1" max="999" placeholder="อายุ IC" required>
+            </div>
+
+            <div class="field">
+                <label for="ocAge">อายุ OC <span class="required">*</span></label>
+                <input id="ocAge" name="ocAge" type="number"
+                    min="1" max="999" placeholder="อายุ OC" required>
+            </div>
+        </div>
+
+        <div class="section-title">02 — GANG ROLE</div>
+
+        <div class="field">
+            <label for="role">สายที่ต้องการเข้า <span class="required">*</span></label>
+            <select id="role" name="role" required>
+                <option value="">-- เลือกสายที่ต้องการ --</option>
+                <option value="Story">🎭 สายสตอรี่ (Story)</option>
+                <option value="Farm">💰 สายฟาร์ม (Farm)</option>
+            </select>
+        </div>
+
+        <div class="field">
+            <label for="reason">สาเหตุที่อยากเข้าแก๊ง <span class="required">*</span></label>
+            <textarea id="reason" name="reason"
+                maxlength="1500"
+                placeholder="บอกเหตุผลที่อยากเข้าร่วม Neo Eclipse..."
+                required></textarea>
+        </div>
+
+        <div class="field">
+            <label for="weapons">อาวุธที่มี</label>
+            <textarea id="weapons" name="weapons"
+                maxlength="1000"
+                placeholder="ระบุอาวุธที่ตัวละครมี หรือพิมพ์ว่าไม่มี"></textarea>
+        </div>
+
+        <div class="section-title">03 — CHARACTER IDENTITY</div>
+
+        <div class="field">
+            <label for="characterImage">รูปตัวละคร <span class="required">*</span></label>
+
+            <div class="upload-box" id="uploadBox" role="button"
+                tabindex="0" aria-label="เลือกรูปตัวละคร">
+                <img id="preview" alt="ตัวอย่างรูปตัวละคร">
+
+                <div id="uploadContent">
+                    <div class="upload-icon">📸</div>
+                    <p>กดเพื่อเลือกรูปตัวละคร</p>
+                    <small>JPG, PNG, WEBP ขนาดไม่เกิน 7 MB</small>
+                </div>
+
+                <input id="characterImage" type="file"
+                    accept="image/jpeg,image/png,image/webp" required>
+            </div>
+
+            <button type="button" id="removeImage" class="remove-image">
+                ลบรูปที่เลือก
+            </button>
+        </div>
+
+        <div class="section-title">04 — REVIEW TEAM</div>
+
+        <div class="field">
+            <label for="reviewer">ผู้ตรวจสอบใบสมัคร</label>
+            <select id="reviewer" name="reviewer">
+                <option value="all">📢 ผู้ตรวจสอบทั้งหมด</option>
+                <option value="leader">👑 หัวลีด</option>
+                <option value="vice">🛡️ รองลีด</option>
+                <option value="secretary">📑 เลขา</option>
+            </select>
+        </div>
+
+        <div class="consent">
+            <input id="confirm" type="checkbox" required>
+            <label for="confirm">
+                ข้าพเจ้าตรวจสอบข้อมูลแล้ว และยินยอมให้ส่งข้อมูลใบสมัคร
+                ไปยังทีมงาน Neo Eclipse เพื่อใช้ในการพิจารณา
+            </label>
+        </div>
+
+        <button class="submit-btn" id="submitBtn" type="submit">
+            🚀 ส่งใบสมัครเข้า Neo Eclipse
+        </button>
+
+        <div id="message" role="status" aria-live="polite"></div>
+
+    </form>
+</div>
+</main>
+
+<footer>
+    NEO ECLIPSE [NE] · RECRUITMENT DIVISION<br>
+    BEYOND THE DARKNESS, WE RISE.
+</footer>
+
+<script>
+/*
+  เปลี่ยน URL นี้เป็น URL ของ Cloudflare Worker
+  ห้ามใส่ Discord Webhook ลงในไฟล์ HTML
+*/
+const WORKER_URL = "ใส่_URL_CLOUDFLARE_WORKER_ตรงนี้";
+
+const form = document.getElementById("applicationForm");
+const fileInput = document.getElementById("characterImage");
+const preview = document.getElementById("preview");
+const uploadContent = document.getElementById("uploadContent");
+const uploadBox = document.getElementById("uploadBox");
+const removeButton = document.getElementById("removeImage");
+const submitButton = document.getElementById("submitBtn");
+const message = document.getElementById("message");
+
+let imageURL = null;
+
+uploadBox.addEventListener("click", (event) => {
+    if (event.target.closest("#removeImage")) return;
+    fileInput.click();
+});
+
+uploadBox.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        fileInput.click();
+    }
+});
+
+fileInput.addEventListener("change", () => {
+    const file = fileInput.files[0];
+    if (!file) return;
+
+    const allowedTypes = [
+        "image/jpeg",
+        "image/png",
+        "image/webp"
+    ];
+
+    if (!allowedTypes.includes(file.type)) {
+        showMessage("กรุณาเลือกไฟล์ JPG, PNG หรือ WEBP", false);
+        fileInput.value = "";
+        return;
+    }
+
+    if (file.size > 7 * 1024 * 1024) {
+        showMessage("รูปมีขนาดใหญ่เกินไป กรุณาเลือกไฟล์ไม่เกิน 7 MB", false);
+        fileInput.value = "";
+        return;
+    }
+
+    if (imageURL) URL.revokeObjectURL(imageURL);
+
+    imageURL = URL.createObjectURL(file);
+    preview.src = imageURL;
+    preview.style.display = "block";
+    uploadContent.style.display = "none";
+    removeButton.style.display = "block";
+
+    message.style.display = "none";
+});
+
+removeButton.addEventListener("click", (event) => {
+    event.stopPropagation();
+
+    if (imageURL) URL.revokeObjectURL(imageURL);
+
+    imageURL = null;
+    fileInput.value = "";
+    preview.removeAttribute("src");
+    preview.style.display = "none";
+    uploadContent.style.display = "block";
+    removeButton.style.display = "none";
+});
+
+function showMessage(text, success) {
+    message.textContent = text;
+    message.className = success ? "success" : "error";
+    message.style.display = "block";
+}
+
+form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    if (!form.reportValidity()) return;
+
+    if (WORKER_URL.includes("ใส่_URL_")) {
+        showMessage(
+            "กรุณาตั้งค่า URL ของ Cloudflare Worker ก่อนใช้งาน",
+            false
+        );
+        return;
+    }
+
+    const file = fileInput.files[0];
+
+    if (!file) {
+        showMessage("กรุณาแนบรูปตัวละครก่อนส่งใบสมัคร", false);
+        return;
+    }
+
+    const reviewerNames = {
+        all: "ผู้ตรวจสอบทั้งหมด",
+        leader: "หัวลีด",
+        vice: "รองลีด",
+        secretary: "เลขา"
+    };
+
+    const application = {
+        icName: document.getElementById("icName").value.trim(),
+        ocName: document.getElementById("ocName").value.trim(),
+        icAge: document.getElementById("icAge").value,
+        ocAge: document.getElementById("ocAge").value,
+        role: document.getElementById("role").value,
+        reason: document.getElementById("reason").value.trim(),
+        weapons: document.getElementById("weapons").value.trim() || "ไม่มี",
+        reviewer: reviewerNames[
+            document.getElementById("reviewer").value
+        ]
+    };
+
+    submitButton.disabled = true;
+    submitButton.textContent = "⏳ กำลังส่งใบสมัคร...";
+    message.style.display = "none";
+
+    try {
+        const formData = new FormData();
+
+        formData.append("application", JSON.stringify(application));
+        formData.append("characterImage", file, file.name);
+
+        const response = await fetch(WORKER_URL, {
+            method: "POST",
+            body: formData
+        });
+
+        const result = await response.json().catch(() => ({}));
+
+        if (!response.ok) {
+            throw new Error(
+                result.error || "ส่งใบสมัครไม่สำเร็จ"
+            );
+        }
+
+        showMessage(
+            "✅ ส่งใบสมัครเรียบร้อยแล้ว! กรุณารอทีมงาน Neo Eclipse ตรวจสอบ",
+            true
+        );
+
+        form.reset();
+
+        if (imageURL) URL.revokeObjectURL(imageURL);
+
+        imageURL = null;
+        preview.removeAttribute("src");
+        preview.style.display = "none";
+        uploadContent.style.display = "block";
+        removeButton.style.display = "none";
+
+    } catch (error) {
+        showMessage(
+            "❌ ส่งใบสมัครไม่สำเร็จ: " + error.message,
+            false
+        );
+    } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = "🚀 ส่งใบสมัครเข้า Neo Eclipse";
+    }
+});
+</script>
+
+</body>
+  </html>
